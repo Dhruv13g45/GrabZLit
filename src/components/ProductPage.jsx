@@ -2,10 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ReviewComponent from "./ReviewComponent"
+import { useDispatch } from 'react-redux'
+import { addProductInWishList } from '../redux/slices/wishListSlice'
 
 const ProductPage = ({ productInfo }) => {
     const [singleProductData, setSingleProductData] = useState({})
     const navigate = useNavigate();
+    const dispatchInWishList = useDispatch();
     const stockCount = 250;
     const singleProductApi = `https://fakestoreapi.com/products/${productInfo.productId}`
 
@@ -35,6 +38,13 @@ const ProductPage = ({ productInfo }) => {
         navigate(0);
     }
 
+
+    const addToWishList = (singleProductId, singleProductImage, singleProductTitle) => {
+
+    }
+
+
+
     return (
         <div className='w-full p-3'>
             <button className='text-lg w-[10%] font-bold p-3 hover:border-[3px] bg-black text-white hover:border-black rounded-md hover:bg-white hover:text-black duration-150' onClick={backBtnToggle}>
@@ -51,16 +61,17 @@ const ProductPage = ({ productInfo }) => {
                     <h3 className='text-lg font-bold'>Category : {singleProductData.category}</h3>
                     <h3 className='text-lg font-bold'>Stock : {stockCount}</h3>
 
-                    {/* <h3 className='text-lg font-bold'>Rating : {singleProductData.rating.rate}</h3> */}
                     <button className='text-lg w-full font-bold p-3 hover:border-[3px] bg-black text-white hover:border-black rounded-md hover:bg-white hover:text-black duration-150'>
                         Add to Cart
                     </button>
-                    <button className='text-lg w-full font-bold p-3 hover:border-[3px] bg-black text-white hover:border-black rounded-md hover:bg-white hover:text-black duration-150'>
+                    <button className='text-lg w-full font-bold p-3 hover:border-[3px] bg-black text-white hover:border-black rounded-md hover:bg-white hover:text-black duration-150'
+                        onClick={() => addToWishList(singleProductData.id, singleProductData.image, singleProductData.title)}
+                    >
                         Add to WishList
                     </button>
-                    <button className='text-lg w-full font-bold p-3 hover:border-[3px] bg-black text-white hover:border-black rounded-md hover:bg-white hover:text-black duration-150'>
+                    {/* <button className='text-lg w-full font-bold p-3 hover:border-[3px] bg-black text-white hover:border-black rounded-md hover:bg-white hover:text-black duration-150'>
                         Give Feedback
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <ReviewComponent singleProductCategory={singleProductData.category} />

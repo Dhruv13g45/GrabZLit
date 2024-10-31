@@ -3,17 +3,22 @@ import { createSlice } from "@reduxjs/toolkit";
 const reviewSlice = createSlice({
     name: "reviews",
     initialState: {
-        nigga: [],
+        reviews: [
+            {
+                review: "Very Great Product",
+                reviewProductCategory: "men's clothing",
+            }
+        ],
     },
     reducers: {
         addItems: (state, action) => {
             console.log(action.payload)
             try {
 
-                const { review, category } = action.payload || {}
+                const { review, reviewProductCategory } = action.payload || {}
 
-                if (review && category) {
-                    state.nigga.push({ review, category })
+                if (review && reviewProductCategory) {
+                    state.reviews.push({ review, reviewProductCategory })
                 }
             }
             catch (error) {

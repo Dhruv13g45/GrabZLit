@@ -36,9 +36,15 @@ const Navbar = () => {
             </div>
 
             <div className='w-[30%] h-full flex text-xl justify-evenly items-center '>
-                <NavLink to="wishList">WishList</NavLink>
-                <NavLink to="cart">Cart</NavLink>
-                <NavLink to="bill">Bill</NavLink>
+                <NavLink to="wishList"
+                    className={({ isActive }) => `${isActive ? "border border-black rounded-xl hover:no-underline px-5 py-3" : "text-black"} hover:underline hover:underline-offset-2 duration-300 ease-in-out`}
+                >WishList</NavLink>
+                <NavLink to="cart"
+                    className={({ isActive }) => `${isActive ? "border border-black rounded-xl hover:no-underline px-5 py-3" : "text-black"} hover:underline hover:underline-offset-2 duration-300 ease-in-out`}
+                >Cart</NavLink>
+                <NavLink to="bill"
+                    className={({ isActive }) => `${isActive ? "border border-black rounded-xl hover:no-underline px-5 py-3" : "text-black"} hover:underline hover:underline-offset-2 duration-300 ease-in-out`}
+                >Bill</NavLink>
             </div>
         </div>
     )
